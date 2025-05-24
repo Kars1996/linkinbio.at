@@ -1,6 +1,5 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
@@ -9,12 +8,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id                  String    @id @default(auto()) @map("_id") @db.ObjectId
+  id                  String    @id @default(cuid())
   username            String    @unique
   lastUpdatedUsername DateTime? @map("last_updated_username")
   emailVerified       DateTime? @map("email_verified")
@@ -56,8 +55,8 @@ enum Layout {
 }
 
 model WebsiteLink {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId   String  @map("user_id") @db.ObjectId
+  id       String  @id @default(cuid())
+  userId   String  @map("user_id")
   url      String
   archived Boolean @default(false)
   title    String
@@ -69,13 +68,13 @@ model WebsiteLink {
   user   User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   clicks WebsiteClick[]
 
-  @@unique([userId, id])
+  @@unique([userId, order])
   @@map("website_links")
 }
 
 model PlatformLink {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId   String  @map("user_id") @db.ObjectId
+  id       String  @id @default(cuid())
+  userId   String  @map("user_id")
   provider String
   username String
   archived Boolean @default(false)
@@ -84,13 +83,13 @@ model PlatformLink {
   user   User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   clicks PlatformClick[]
 
-  @@unique([userId, id])
+  @@unique([userId, order])
   @@map("platform_links")
 }
 
 model UserView {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String   @map("user_id") @db.ObjectId
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
   ipAddress String?  @map("ip_address")
   country   String?
   timestamp DateTime @default(now())
@@ -102,8 +101,8 @@ model UserView {
 }
 
 model WebsiteClick {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  linkId    String   @map("link_id") @db.ObjectId
+  id        String   @id @default(cuid())
+  linkId    String   @map("link_id")
   timestamp DateTime @default(now())
   ipAddress String?  @map("ip_address")
 
@@ -113,8 +112,8 @@ model WebsiteClick {
 }
 
 model PlatformClick {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  linkId    String   @map("link_id") @db.ObjectId
+  id        String   @id @default(cuid())
+  linkId    String   @map("link_id")
   timestamp DateTime @default(now())
   ipAddress String?  @map("ip_address")
 
@@ -124,8 +123,8 @@ model PlatformClick {
 }
 
 model Background {
-  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId             String  @unique @map("user_id") @db.ObjectId
+  id                 String  @id @default(cuid())
+  userId             String  @unique @map("user_id")
   url                String?
   color              String?
   gradientStartColor String? @map("gradient_start_color")
@@ -135,13 +134,12 @@ model Background {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, id])
   @@map("backgrounds")
 }
 
 model Buttons {
-  id                    String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId                String   @unique @db.ObjectId
+  id                    String   @id @default(cuid())
+  userId                String   @unique
   backgroundColor       String?  @map("background_color")
   backgroundBlur        Float?   @map("background_blur")
   backgroundOpacity     Float?   @map("background_opacity")
@@ -159,13 +157,12 @@ model Buttons {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, id])
   @@map("buttons")
 }
 
 model Profile {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId       String   @unique @map("user_id") @db.ObjectId
+  id           String   @id @default(cuid())
+  userId       String   @unique @map("user_id")
   titleFont    String?  @map("title_font")
   titleColor   String?  @map("title_color")
   textColor    String?  @map("text_color")
@@ -176,13 +173,12 @@ model Profile {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, id])
   @@map("profiles")
 }
 
 model Icons {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId       String   @unique @map("user_id") @db.ObjectId
+  id           String   @id @default(cuid())
+  userId       String   @unique @map("user_id")
   shadow       Boolean?
   style        String?
   color        String?
@@ -192,19 +188,17 @@ model Icons {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, id])
   @@map("icons")
 }
 
 model Effect {
-  id               String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId           String  @unique @map("user_id") @db.ObjectId
+  id               String  @id @default(cuid())
+  userId           String  @unique @map("user_id")
   titleEffect      String? @map("title_effect")
   backgroundEffect String? @map("background_weather")
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, id])
   @@map("visuals")
 }
 
@@ -215,8 +209,8 @@ enum ContentType {
 }
 
 model Spotify {
-  id             String      @id @default(auto()) @map("_id") @db.ObjectId
-  userId         String      @unique @map("user_id") @db.ObjectId
+  id             String      @id @default(cuid())
+  userId         String      @unique @map("user_id")
   contentId      String      @map("content_id")
   type           ContentType
   darkBackground Boolean     @default(false) @map("dark_background")
@@ -229,8 +223,8 @@ model Spotify {
 }
 
 model Youtube {
-  id      String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId  String  @unique @map("user_id") @db.ObjectId
+  id      String  @id @default(cuid())
+  userId  String  @unique @map("user_id")
   videoId String  @map("video_id")
   enabled Boolean @default(true)
 
@@ -240,8 +234,8 @@ model Youtube {
 }
 
 model Soundcloud {
-  id      String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId  String  @unique @map("user_id") @db.ObjectId
+  id      String  @id @default(cuid())
+  userId  String  @unique @map("user_id")
   trackId String  @map("track_id")
   enabled Boolean @default(true)
 

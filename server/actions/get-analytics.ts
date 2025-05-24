@@ -106,7 +106,7 @@ export async function getAnalytics(): Promise<Analytics | null> {
       acc: {
         [country: string]: number;
       },
-      view,
+      view: any,
     ) => {
       if (view.country) {
         acc[view.country] = (acc[view.country] || 0) + 1;
@@ -137,6 +137,6 @@ export async function getAnalytics(): Promise<Analytics | null> {
       previous: previousCtr,
     },
     popularLinks,
-    data: countryViews,
+    data: countryViews as any,
   };
 }

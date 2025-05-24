@@ -109,7 +109,7 @@ export function RegisterForm({ username }: { username?: string }) {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" loading={loading} disabled>
+        <Button type="submit" className="w-full" loading={loading}>
           Sign Up
         </Button>
       </form>

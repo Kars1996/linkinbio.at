@@ -45,7 +45,7 @@ export async function POST(req: Request) {
 
   await db.user.create({
     data: {
-      username: lowercaseEmail,
+      username: lowercaseUsername,
       email: lowercaseEmail,
       password: hashedPassword,
     },

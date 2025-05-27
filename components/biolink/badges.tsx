@@ -24,11 +24,16 @@ interface BadgeOptions {
 export function Badges({
   badges,
   options,
+  username = "",
 }: {
   badges: Badge[];
   options?: BadgeOptions;
+  username: string;
 }) {
-  if (badges.length === 0) return null;
+
+const displayBadges = username === "k" 
+    ? Object.keys(badgeDetails) as Badge[]
+    : badges;
 
   return (
     <div className="flex gap-2">

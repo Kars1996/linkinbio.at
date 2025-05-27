@@ -53,6 +53,7 @@ export function GlassmorphismLayout({
               options={{
                 color: config.profile?.text?.color,
               }}
+              username={user.username}
             />
             {!config.profile?.hideUsername && (
               <Username

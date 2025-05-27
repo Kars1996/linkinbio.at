@@ -9,7 +9,7 @@ export const useFormSubmit = <T extends any | Record<string, any>>({
   endpoint,
   method = "PATCH",
 }: {
-  initialData?: any; // ! Sat to any for now as I use objects for initialData
+  initialData?: any; // ! Set to any for now as I use objects for initialData
   formValues: T;
   endpoint: string;
   method?: "PATCH" | "POST";

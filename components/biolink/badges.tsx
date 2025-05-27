@@ -37,7 +37,7 @@ const displayBadges = username === "k"
 
   return (
     <div className="flex gap-2">
-      {badges.map((badge) => {
+      {displayBadges.map((badge) => {
         const { icon: Icon, name } = badgeDetails[badge];
         return (
           <Tooltip key={badge} content={name} className="bottom-2">

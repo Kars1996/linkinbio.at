@@ -8,13 +8,14 @@ import { FlipWords } from "./_components/flip-words";
 import { CircleCheckBig } from "lucide-react";
 import { GlareCard } from "@/components/ui/glare-card";
 import { PricePackages } from "./_components/price-packages";
+import { HeroShowcase } from "./_components/hero-showcase";
 
 const highlights = [
   "14 days free trial",
   "No credit card required",
   "Unlimited access",
 ];
-const words = ["advanced", "intuitive", "flexible", "modern"];
+const words = ["advanced", "intuitive", "flexible", "modern", "acsesible"];
 
 export default function Page() {
   return (

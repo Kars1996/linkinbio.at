@@ -1,4 +1,5 @@
-/*import {
+import { WeatherEffect } from "@/components/biolink/effects/weather-effect";
+import {
   Biolink,
   ContentType,
   Font,
@@ -117,7 +118,7 @@ export const dummyBiolinks: Biolink[] = [
         backgroundRadius: "full",
       },
       effects: {
-        weather: "WeatherEffect.Rain",
+        weather: "rain",
       },
     },
     links: {
@@ -143,6 +144,7 @@ export const dummyBiolinks: Biolink[] = [
       platform: [],
     },
     widgets: {},
+    views: 12,
   },
   {
     user: {
@@ -219,6 +221,8 @@ export const dummyBiolinks: Biolink[] = [
       platform: dummyPlatformlinks,
     },
     widgets: {},
+    views: 12,
+
   },
   {
     user: {
@@ -290,7 +294,7 @@ export const dummyBiolinks: Biolink[] = [
       },
       effects: {
         title: TitleEffect.Typewriter,
-        weather: WeatherEffect.Thunder,
+        weather: "thunder",
       },
     },
     links: {
@@ -306,6 +310,7 @@ export const dummyBiolinks: Biolink[] = [
         type: ContentType.Album,
       },
     },
+    views: 12,
   },
   {
     user: {
@@ -397,7 +402,7 @@ export const dummyBiolinks: Biolink[] = [
       platform: dummyPlatformlinks,
     },
     widgets: {},
+    views: 12,
   },
 ];
 
-*/

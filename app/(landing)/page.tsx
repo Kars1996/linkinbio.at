@@ -7,6 +7,7 @@ import { BackgroundCellCore } from "@/components/ui/background-ripple-effect";
 import { FlipWords } from "./_components/flip-words";
 import { CircleCheckBig } from "lucide-react";
 import { GlareCard } from "@/components/ui/glare-card";
+import { PricePackages } from "./_components/price-packages";
 
 const highlights = [
   "14 days free trial",
@@ -53,9 +54,21 @@ export default function Page() {
           </div>
         </div>
       </Container>
+      <section className="relative z-50 py-24">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-medium tracking-wide mb-4">
+            Simple, transparent pricing
+          </h2>
+          <p className="text-[#B8CEC1]">
+            Choose the perfect plan for your needs
+          </p>
+        </div>
+        <PricePackages />
+      </section>
       <div className="border-t border-t-teal-900">
         <InfiniteMovingHighlights speed="slow" direction="right" />
       </div>
+
     </div>
   );
 }

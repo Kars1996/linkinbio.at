@@ -13,7 +13,7 @@ export const prices = [
     features: [
       "All core features",
       "Up to 10 links",
-      "Fully customizable buttons",
+      "Fully customizable buttons", 
       "Top icon styles",
       "SEO optimization",
     ],
@@ -26,7 +26,7 @@ export const prices = [
     included: "Everything from Free, plus",
     features: [
       "Unlimited links",
-      "Analytics",
+      "Analytics", 
       "Title Effects",
       "Layout customization",
       "Weather Effects",
@@ -46,39 +46,39 @@ export function PricePackages() {
             <div
               key={index}
               className={cn(
-                "bg-transoarent w-full max-w-sm rounded-xl bg-gradient-to-br from-white/10 to-white/50 p-px shadow-lg shadow-indigo-950/5 md:self-end",
-                featured && "from-neutral-700/80 to-60%",
+                "w-full max-w-sm rounded-xl bg-gradient-to-br from-[#0B363C]/10 to-[#0B363C]/50 p-px shadow-lg shadow-teal-950/5 md:self-end",
+                featured && "from-[#39997c]/20 to-60%",
               )}
             >
               <CardSpotlightEffect
                 className={cn(
-                  "overflow-hidden border-none bg-neutral-900 bg-gradient-to-b from-neutral-900/50 to-neutral-950/75 text-white",
-                  featured && "from-white/5",
+                  "overflow-hidden bg-[#0B363C]/50 border border-teal-800 bg-gradient-to-b from-[#0B363C]/50 to-[#0B363C]/75 text-white backdrop-blur-sm",
+                  featured && "from-[#39997c]/10",
                 )}
               >
                 {featured && (
-                  <div className="absolute right-0 top-0 m-2 rounded-full border border-indigo-900 bg-gradient-to-r from-indigo-500/5 to-indigo-500/25 px-3 py-1.5 text-xs text-indigo-50 shadow-2xl">
+                  <div className="absolute right-0 top-0 m-2 rounded-full border border-[#39997c] bg-gradient-to-r from-[#39997c]/5 to-[#39997c]/25 px-3 py-1.5 text-xs text-[#E3FFCC] shadow-2xl">
                     Recommended
                   </div>
                 )}
                 <div>
-                  <div className="mb-2 text-xl font-medium text-indigo-50">
+                  <div className="mb-2 text-xl font-medium text-[#E3FFCC]">
                     {item.title}
                   </div>
-                  <p className="text-sm text-neutral-400">{item.description}</p>
+                  <p className="text-sm text-[#B8CEC1]">{item.description}</p>
                 </div>
-                <div className="my-4 h-1 border-t border-dashed border-neutral-700/80"></div>
+                <div className="my-4 h-1 border-t border-dashed border-[#39997c]/20"></div>
                 <div>
                   <div className="space-y-1">
                     <div
                       style={{
-                        filter: `drop-shadow(0 0 0.25rem rgba(255, 255, 255, 0.5))`,
+                        filter: `drop-shadow(0 0 0.25rem rgba(227, 255, 204, 0.5))`,
                       }}
-                      className="bg-gradient-to-b from-indigo-200 to-indigo-50 bg-clip-text text-4xl font-bold text-transparent"
+                      className="bg-gradient-to-b from-[#E3FFCC] to-[#39997c] bg-clip-text text-4xl font-bold text-transparent"
                     >
                       {item.price ? `€${item.price}` : "Free"}
                     </div>
-                    <div className="text-xs text-neutral-400">
+                    <div className="text-xs text-[#B8CEC1]">
                       {item.price ? "Lifetime" : "Forever"}
                     </div>
                   </div>
@@ -87,29 +87,30 @@ export function PricePackages() {
                   <Link
                     href="/sign-in"
                     className={cn(
-                      "block w-full rounded-lg border border-neutral-800 bg-white/5 bg-gradient-to-r to-white/10 px-5 py-2.5 text-center text-sm shadow-lg",
+                      "block w-full rounded-lg border border-[#39997c]/20 bg-[#0B363C]/50 px-5 py-2.5 text-center text-sm shadow-lg transition-colors duration-200 hover:bg-[#39997c]/20",
                       featured &&
-                        "border-indigo-800 from-indigo-900/80 to-indigo-950 shadow-indigo-950/10",
+                        "border-[#39997c]/40 bg-[#39997c]/20 hover:bg-[#39997c]/30",
                     )}
                   >
                     <span
                       style={{
-                        filter: `drop-shadow(0 0 1rem rgba(255, 255, 255, 0.5))`,
+                        filter: `drop-shadow(0 0 1rem rgba(227, 255, 204, 0.3))`,
                       }}
+                      className="text-[#E3FFCC]"
                     >
                       {item.button}
                     </span>
                   </Link>
                 </div>
                 <div className="mt-4">
-                  <div className="mb-4 bg-gradient-to-b from-neutral-300 to-indigo-50 bg-clip-text text-sm font-bold text-transparent">
+                  <div className="mb-4 bg-gradient-to-b from-[#E3FFCC] to-[#39997c] bg-clip-text text-sm font-bold text-transparent">
                     {item.included}
                   </div>
                   <ul className="mb-4 space-y-2">
                     {item.features.map((item, index) => (
                       <li key={index} className="flex items-baseline gap-2">
-                        <Check className="size-3 shrink-0" />
-                        <span className="text-sm text-neutral-400">{item}</span>
+                        <Check className="size-3 shrink-0 text-[#39997c]" />
+                        <span className="text-sm text-[#B8CEC1]">{item}</span>
                       </li>
                     ))}
                   </ul>

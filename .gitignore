@@ -33,6 +33,9 @@ package-lock.json
 # vercel
 .vercel
 
+# kars
+.VSCodeCounter
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

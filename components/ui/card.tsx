@@ -59,7 +59,7 @@ export const CardSpotlightEffect = ({
       className={cn(
         "relative self-start rounded-xl border bg-background p-6 shadow-2xl",
         gradient &&
-          "bg-gradient-to-br from-background via-indigo-500/5 to-secondary",
+          "bg-gradient-to-br from-[#0B363C] via-[#39997c]/5 to-[#E3FFCC]/10",
         className,
       )}
     >
@@ -67,7 +67,7 @@ export const CardSpotlightEffect = ({
         className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
         style={{
           opacity,
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,.06), transparent 40%)`,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(57, 153, 124, 0.15), transparent 40%)`,
         }}
       />
       {children}

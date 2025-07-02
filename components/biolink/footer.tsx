@@ -10,6 +10,7 @@ export function Footer({
   color?: string;
   className?: string;
 }) {
+  return null;
   return (
     <Link
       href="/"
